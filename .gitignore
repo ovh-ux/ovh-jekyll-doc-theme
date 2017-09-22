@@ -6,4 +6,4 @@ Gemfile.lock
 .idea
 .docker.env
 docker-runtime
-.DS_Store
+*DS_Store
