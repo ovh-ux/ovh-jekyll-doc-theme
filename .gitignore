@@ -3,3 +3,7 @@
 .sass-cache
 _site
 Gemfile.lock
+.idea
+.docker.env
+docker-runtime
+.DS_Store
