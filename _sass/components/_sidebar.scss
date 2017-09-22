@@ -1,6 +1,26 @@
 $sidebar-color-main: $oui-color-zodiac;
 $sidebar-color-secondary: $oui-color-rhino;
 
+@keyframes openNavEntry {
+    from {
+        left: -40%;
+        opacity: 0;
+    }
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes selectedNavEntry {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(90deg);
+    }
+}
+
 .navbar {
     min-height: 0;
     padding: 0;
@@ -17,7 +37,7 @@ $sidebar-color-secondary: $oui-color-rhino;
         position: fixed;
         bottom: 0;
         left: 0;
-        z-index: 2;
+        z-index: 11;
         background-color: $sidebar-color-main;
         text-align: left;
     }
@@ -59,8 +79,10 @@ $sidebar-color-secondary: $oui-color-rhino;
 
     &__entries,
     &__subentries {
+        width: 100%;
         padding: 0;
         margin: 0;
+        overflow-x: hidden;
     }
 
     &__entries {
@@ -69,7 +91,7 @@ $sidebar-color-secondary: $oui-color-rhino;
         position: fixed;
         top: 0;
         left: -80%;
-        z-index: 1;
+        z-index: 10;
         background-color: $sidebar-color-main;
         overflow-y: auto;
         transition: left .2s;
@@ -83,16 +105,25 @@ $sidebar-color-secondary: $oui-color-rhino;
         height: 0;
         position: relative;
         overflow-y: auto;
+        background-color: $sidebar-color-secondary;
 
         &--active {
             height: auto;
+
+            .navbar__link--lvl-2 {
+                animation: openNavEntry .35s ease-in-out;
+                left: 0;
+                opacity: 1;
+            }
         }
     }
 
     &__entry {
+        width: 100%;
         list-style-type: none;
         padding: 0;
         margin: 0;
+        overflow-x: hidden;
     }
 
     &__link {
@@ -104,7 +135,9 @@ $sidebar-color-secondary: $oui-color-rhino;
         &--lvl {
             &-2 {
                 padding-left: $space-l2;
-                background-color: $sidebar-color-secondary;
+                position: relative;
+                left: -40%;
+                opacity: 0;
             }
         }
 
@@ -121,6 +154,12 @@ $sidebar-color-secondary: $oui-color-rhino;
             font-size: .8rem;
             color: white;
             opacity: .6;
+            transform: rotate(0);
+
+            &--active {
+                transform: rotate(90deg);
+                animation: selectedNavEntry .15s ease-in;
+            }
         }
 
         &-active {
