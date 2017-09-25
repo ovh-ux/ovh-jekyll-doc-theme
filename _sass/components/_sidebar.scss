@@ -49,6 +49,20 @@ $sidebar-color-secondary: $oui-color-rhino;
         margin-right: $space-base;
         position: relative;
 
+        &--active {
+            .navbar__icon-bar {
+                &--top {
+                    transform: rotate(45deg) translate(1px, 1px);
+                }
+                &--middle {
+                    transform: scaleX(0) translateY(-50%);
+                }
+                &--bottom {
+                    transform: rotate(-45deg) translate(1px, -1px);
+                }
+            }
+        }
+
         &-bar {
             display: block;
             width: 100%;
@@ -57,18 +71,24 @@ $sidebar-color-secondary: $oui-color-rhino;
             border-radius: 1px;
             position: absolute;
             left: 0;
+            transition: all .2s ease-in;
 
             &--top {
                 top: 0;
+                transform: rotate(0) translate(0, 0);
+                transform-origin: top left;
             }
 
             &--middle {
                 top: 50%;
-                transform: translateY(-50%);
+                transform: scaleX(1) translateY(-50%);
+                transform-origin: center;
             }
 
             &--bottom {
                 bottom: 0;
+                transform: rotate(0) translate(0, 0);
+                transform-origin: bottom left;
             }
         }
     }
